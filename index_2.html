@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Gantt + D3
+	</title>
+	<script type="text/javascript" src="//cdn.dhtmlx.com/gantt/site/dhtmlxgantt.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdn.dhtmlx.com/gantt/site/skins/dhtmlxgantt_meadow.css">
+</head>
+<body>
+<style type="text/css">
+	html, body {
+		padding: 0;
+		margin: 0;
+	}
+	.widget{
+		display: grid;
+		grid-template-columns: 420px 1fr;
+		grid-template-rows: 400px 200px;
+	}
+	#gantt_block{
+		grid-column: 1 / 3;
+		grid-row: 1;
+		height: 380px;
+	}
+
+	.workload_users{
+		grid-column: 1;
+		grid-row: 2;
+	}
+	.workload_jobs{
+		grid-column: 2;
+		grid-row: 2;
+		overflow: hidden;
+	}
+</style>
+<div class='widget'>
+	<div id='gantt_block'></div>
+	<div class='workload_users'></div>
+	<div class='workload_jobs'></div>
+</div>
+<script type="text/javascript">
+	gantt.serverList("users", [
+		{ label:"Not Assigned", 	key:0, job:"" },
+		{ label:"John Doe", 		key:1, job:"Developer" },
+		{ label:"Marta Brown", 		key:2, job:"Marketing" },
+		{ label:"Chin Makfi", 		key:3, job:"UX and QA" },
+		{ label:"Ajia Rowen", 		key:4, job:"Designer" },
+		{ label:"Jean Gogh", 		key:5, job:"Tech Writer" }
+	]);
+
+	gantt.locale.labels.column_owner = "Owner";
+	gantt.locale.labels.section_owner = "Owner";
+
+	gantt.config.lightbox.sections = [
+		{name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+		{name: "owner", height: 22, map_to: "assignedTo", type: "select", options: gantt.serverList("users")},
+		{name: "time", type: "duration", map_to: "auto"}
+	];
+
+	gantt.config.columns = [
+		{name:"text", label:"Task name", tree:true, width:170 },
+		{name:"owner", align: "center", template: function(item) { 
+			return gantt.getLabel('assignedTo', item.assignedTo) }, width: 120},
+		{name:"start_date", align: "center", width: 90},
+		{name:"add", width:40}
+	];
+
+	gantt.init("gantt_block");
+	gantt.load("data.json", function(){
+		console.log(getJobData());
+	});
+
+	function getJobData(){
+		var state = gantt.getState();
+		var users = gantt.serverList("users");
+
+		var data = {};
+		var line = [];
+
+		var d = new Date(state.min_date);
+		while (d < state.max_date){
+			line.push(0);
+			d.setDate(d.getDate()+1);
+		}
+
+		for (var i = 0; i < users.length; i++)
+			data[users[i].key] = [].concat(line);
+
+		gantt.eachTask(task => {
+			if (task.type === "project"  || task.type === "milestone")
+				return;
+
+			var t = new Date(task.start_date);
+			var line = data[task.assignedTo || 0];
+			while (t < task.end_date){
+				i = Math.round((t - state.min_date)/(1000*60*60*24));
+				line[i] += 8;
+				t.setDate(t.getDate()+1);
+			}
+
+		});
+
+		return data;
+	}
+
+</script>
+</body>
+</html>

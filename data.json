@@ -1,0 +1,240 @@
+{
+	"data": [{
+		"id": 11,
+		"text": "Product launch",
+		"type": "project",
+		"order": "5",
+		"progress": 0.6,
+		"open": true,
+		"start_date": "02-08-2017 00:00",
+		"duration": 18,
+		"end_date": "20-08-2017 00:00",
+		"parent": 0
+	}, {
+		"id": 12,
+		"text": "Perform Initial testing",
+		"assignedTo": 3,
+		"start_date": "03-08-2017 00:00",
+		"duration": 5,
+		"order": "3",
+		"parent": "11",
+		"progress": 1,
+		"open": true,
+		"end_date": "08-08-2017 00:00"
+	}, {
+		"id": 13,
+		"text": "Development",
+		"type": "project",
+		"start_date": "03-08-2017 00:00",
+		"duration": 14,
+		"order": "3",
+		"parent": "11",
+		"progress": 0.5,
+		"open": true,
+		"end_date": "17-08-2017 00:00"
+	}, {
+		"id": 17,
+		"text": "Develop System",
+		"start_date": "03-08-2017 00:00",
+		"duration": 1,
+		"assignedTo": 1,
+		"order": "3",
+		"parent": "13",
+		"progress": 0.4785714285714286,
+		"open": true,
+		"end_date": "04-08-2017 00:00"
+	}, {
+		"id": 25,
+		"text": "Beta Release",
+		"start_date": "06-08-2017 00:00",
+		"order": "3",
+		"type": "milestone",
+		"parent": "13",
+		"progress": 0,
+		"open": true,
+		"end_date": "06-08-2017 00:00",
+		"duration": 0
+	}, {
+		"id": 18,
+		"text": "Integrate System",
+		"start_date": "08-08-2017 00:00",
+		"assignedTo": 3,
+		"duration": 1,
+		"order": "3",
+		"parent": "13",
+		"progress": 0.8,
+		"open": true,
+		"end_date": "09-08-2017 00:00"
+	}, {
+		"id": 19,
+		"text": "Test",
+		"start_date": "10-08-2017 00:00",
+		"assignedTo": 3,
+		"duration": 4,
+		"order": "3",
+		"parent": "13",
+		"progress": 0.2,
+		"open": true,
+		"end_date": "14-08-2017 00:00"
+	}, {
+		"id": 20,
+		"text": "Marketing",
+		"start_date": "15-08-2017 00:00",
+		"assignedTo": 2,
+		"duration": 2,
+		"order": "3",
+		"parent": "13",
+		"progress": 0,
+		"open": true,
+		"end_date": "17-08-2017 00:00"
+	}, {
+		"id": 14,
+		"text": "Analysis",
+		"start_date": "02-08-2017 00:00",
+		"assignedTo": 2,
+		"duration": 6,
+		"order": "3",
+		"parent": "11",
+		"progress": 0.8,
+		"open": true,
+		"end_date": "08-08-2017 00:00"
+	}, {
+		"id": 15,
+		"text": "Design",
+		"type": "project",
+		"start_date": "03-08-2017 00:00",
+		"duration": 5,
+		"order": "3",
+		"parent": "11",
+		"progress": 0.2,
+		"open": false,
+		"end_date": "08-08-2017 00:00"
+	}, {
+		"id": 21,
+		"text": "Design database",
+		"start_date": "03-08-2017 00:00",
+		"assignedTo": 0,
+		"duration": 4,
+		"order": "3",
+		"parent": "15",
+		"progress": 0.5,
+		"open": true,
+		"end_date": "07-08-2017 00:00"
+	}, {
+		"id": 22,
+		"text": "Software design",
+		"start_date": "03-08-2017 00:00",
+		"assignedTo": 4,
+		"duration": 4,
+		"order": "3",
+		"parent": "15",
+		"progress": 0.1,
+		"open": true,
+		"end_date": "07-08-2017 00:00"
+	}, {
+		"id": 23,
+		"text": "Interface setup",
+		"start_date": "03-08-2017 00:00",
+		"assignedTo": 1,
+		"duration": 5,
+		"order": "3",
+		"parent": "15",
+		"progress": 0,
+		"open": true,
+		"end_date": "08-08-2017 00:00"
+	}, {
+		"id": 16,
+		"text": "Documentation creation",
+		"start_date": "05-08-2017 00:00",
+		"assignedTo": 5,
+		"duration": 1,
+		"order": "3",
+		"parent": "11",
+		"progress": 0,
+		"open": true,
+		"end_date": "06-08-2017 00:00"
+	}, {
+		"id": 24,
+		"text": "Release v1.0",
+		"start_date": "20-08-2017 00:00",
+		"assignedTo": 1,
+		"order": "3",
+		"type": "milestone",
+		"parent": "11",
+		"progress": 0,
+		"open": true,
+		"end_date": "20-08-2017 00:00",
+		"duration": 0
+	}],
+	"links": [{
+		"id": "10",
+		"source": "11",
+		"target": "12",
+		"type": "1"
+	}, {
+		"id": "11",
+		"source": "11",
+		"target": "13",
+		"type": "1"
+	}, {
+		"id": "12",
+		"source": "11",
+		"target": "14",
+		"type": "1"
+	}, {
+		"id": "13",
+		"source": "11",
+		"target": "15",
+		"type": "1"
+	}, {
+		"id": "14",
+		"source": "11",
+		"target": "16",
+		"type": "1"
+	}, {
+		"id": "15",
+		"source": "13",
+		"target": "17",
+		"type": "1"
+	}, {
+		"id": "16",
+		"source": "17",
+		"target": "25",
+		"type": "0"
+	}, {
+		"id": "17",
+		"source": "18",
+		"target": "19",
+		"type": "0"
+	}, {
+		"id": "18",
+		"source": "19",
+		"target": "20",
+		"type": "0"
+	}, {
+		"id": "19",
+		"source": "15",
+		"target": "21",
+		"type": "2"
+	}, {
+		"id": "20",
+		"source": "15",
+		"target": "22",
+		"type": "2"
+	}, {
+		"id": "21",
+		"source": "15",
+		"target": "23",
+		"type": "2"
+	}, {
+		"id": "22",
+		"source": "13",
+		"target": "24",
+		"type": "0"
+	}, {
+		"id": "23",
+		"source": "25",
+		"target": "18",
+		"type": "0"
+	}]
+}
